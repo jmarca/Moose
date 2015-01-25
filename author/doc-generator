@@ -37,11 +37,7 @@ sub main {
 
 sub print_header {
     print <<'EOF';
-package Moose::Manual::Exceptions::Manifest;
-
-use strict;
-use warnings;
-
+# PODNAME: Moose::Manual::Exceptions::Manifest
 # ABSTRACT: A manifest of all exceptions thrown by Moose
 
 __END__
