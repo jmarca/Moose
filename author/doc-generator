@@ -190,19 +190,17 @@ sub _type_constraint_text {
     return q{} if $tc->name() eq 'Any';
 
     my $tc_name;
-    my $preposition;
     if ( $tc->isa('Moose::Meta::TypeConstraint::Class') ) {
         $tc_name = 'L<' . $tc->class() . '> object';
-        $preposition = $tc->class() =~ /^[aeiou]/i ? 'an' : 'a';
     }
     elsif ( $tc->isa('Moose::Meta::TypeConstraint::Role') ) {
         $tc_name     = 'object which does the L<' . $tc->class() . '> role';
-        $preposition = 'an';
     }
     else {
         $tc_name = $tc->name() . ' value';
-        $preposition = $tc->name() =~ /^[aeiou]/i ? 'an' : 'a';
     }
+
+    my $preposition = $tc_name =~ /^[aeiou]/i ? 'an' : 'a';
 
     return "Returns $preposition $tc_name.\n\n";
 }
