@@ -86,6 +86,7 @@ sub print_class_manifest {
     }
 
     print _attribute_text_for($meta);
+    print "\n";
 }
 
 sub _superclass_text_for {
@@ -134,7 +135,7 @@ sub _attribute_text_for {
         grep { !$common{ $_->name() } } $meta->get_all_attributes();
 
     unless (@attributes) {
-        return 'This class has no attributes except for C<message> and C<trace()>.';
+        return "This class has no attributes except for C<message> and C<trace()>.\n";
     }
 
     my $text = "This class has the following methods:\n\n";
@@ -143,7 +144,7 @@ sub _attribute_text_for {
     for my $attr (@attributes) {
         $text .= _one_attribute_text( $meta, $attr );
     }
-    $text .= "=back\n\n";
+    $text .= "=back\n";
 
     return $text;
 }
